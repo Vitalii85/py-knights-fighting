@@ -6,17 +6,17 @@ from app.equipment.potion import Potion
 
 def knights_builder(knights_config: dict, knight: str) -> Knight:
     return Knight(
-        knights_config.get(knight).get("name"),
-        knights_config.get(knight).get("hp"),
-        knights_config.get(knight).get("power"),
+        knights_config.get("name"),
+        knights_config.get("hp"),
+        knights_config.get("power"),
         [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get(knight).get("armour")],
+         for item in knights_config.get("armour")],
         Weapon(
-            knights_config.get(knight).get("weapon").get("name"),
-            knights_config.get(knight).get("weapon").get("power"),
+            knights_config.get("weapon").get("name"),
+            knights_config.get("weapon").get("power"),
         ),
         Potion(
-            knights_config.get(knight).get("potion").get("name"),
-            knights_config.get(knight).get("potion").get("effect"),
-        ) if knights_config.get(knight).get("potion") is not None else None,
+            knights_config.get("potion").get("name"),
+            knights_config.get("potion").get("effect"),
+        ) if knights_config.get("potion") is not None else None,
     )
