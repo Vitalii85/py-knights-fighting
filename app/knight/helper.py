@@ -9,8 +9,10 @@ def knights_builder(knights_config: dict, knight: str) -> Knight:
         knights_config.get("name"),
         knights_config.get("hp"),
         knights_config.get("power"),
-        [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get("armour")],
+        [
+            Armour(item.get("part"), item.get("protection"))
+            for item in knights_config.get("armour")
+        ] if knights_config.get("armour") is not None else [],
         Weapon(
             knights_config.get("weapon").get("name"),
             knights_config.get("weapon").get("power"),
