@@ -1,7 +1,4 @@
-from app.equipment.armour import Armour
-from app.equipment.weapon import Weapon
-from app.equipment.potion import Potion
-from app.knight.knight import Knight
+from app.knight.helper import knights_builder
 
 
 KNIGHTS = {
@@ -96,74 +93,16 @@ def battle(knights_config: dict) -> dict[str, int]:
     # BATTLE PREPARATIONS:
 
     # lancelot
-    lancelot = Knight(
-        knights_config.get("lancelot").get("name"),
-        knights_config.get("lancelot").get("hp"),
-        knights_config.get("lancelot").get("power"),
-        [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get("lancelot").get("armour")],
-        Weapon(
-            knights_config.get("lancelot").get("weapon").get("name"),
-            knights_config.get("lancelot").get("weapon").get("power"),
-        ),
-        Potion(
-            knights_config.get("lancelot").get("potion").get("name"),
-            knights_config.get("lancelot").get("potion").get("effect"),
-        ) if
-        knights_config.get("lancelot").get("potion") is not None else None,
-    )
+    lancelot = knights_builder(knights_config, "lancelot")
 
     # arthur
-    arthur = Knight(
-        knights_config.get("arthur").get("name"),
-        knights_config.get("arthur").get("hp"),
-        knights_config.get("arthur").get("power"),
-        [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get("arthur").get("armour")],
-        Weapon(
-            knights_config.get("arthur").get("weapon").get("name"),
-            knights_config.get("arthur").get("weapon").get("power"),
-        ),
-        Potion(
-            knights_config.get("arthur").get("potion").get("name"),
-            knights_config.get("arthur").get("potion").get("effect"),
-        ) if knights_config.get("arthur").get("potion") is not None else None,
-    )
+    arthur = knights_builder(knights_config, "arthur")
 
     # mordred
-    mordred = Knight(
-        knights_config.get("mordred").get("name"),
-        knights_config.get("mordred").get("hp"),
-        knights_config.get("mordred").get("power"),
-        [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get("mordred").get("armour")],
-        Weapon(
-            knights_config.get("mordred").get("weapon").get("name"),
-            knights_config.get("mordred").get("weapon").get("power"),
-        ),
-        Potion(
-            knights_config.get("mordred").get("potion").get("name"),
-            knights_config.get("mordred").get("potion").get("effect"),
-        ) if knights_config.get("mordred").get("potion") is not None else None,
-    )
+    mordred = knights_builder(knights_config, "mordred")
 
     # red_knight
-    red_knight = Knight(
-        knights_config.get("red_knight").get("name"),
-        knights_config.get("red_knight").get("hp"),
-        knights_config.get("red_knight").get("power"),
-        [Armour(item.get("part"), item.get("protection"))
-         for item in knights_config.get("red_knight").get("armour")],
-        Weapon(
-            knights_config.get("red_knight").get("weapon").get("name"),
-            knights_config.get("red_knight").get("weapon").get("power"),
-        ),
-        Potion(
-            knights_config.get("red_knight").get("potion").get("name"),
-            knights_config.get("red_knight").get("potion").get("effect"),
-        ) if
-        knights_config.get("red_knight").get("potion") is not None else None,
-    )
+    red_knight = knights_builder(knights_config, "red_knight")
 
     # -------------------------------------------------------------------------------
     # BATTLE:

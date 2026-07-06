@@ -39,7 +39,7 @@ class Knight:
         self.equip_weapon()
         self.apply_potion()
 
-    def battle_with(self, other: Knight) -> None:
+    def battle_with(self, other: "Knight") -> None:
         self.battle_preparation()
         other.battle_preparation()
         self.hp -= other.power - self.protection
