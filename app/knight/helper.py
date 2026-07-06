@@ -5,14 +5,15 @@ from app.equipment.potion import Potion
 
 
 def knights_builder(knights_config: dict, knight: str) -> Knight:
+    armour_items = knights_config.get("armour") or []
     return Knight(
         knights_config.get("name"),
         knights_config.get("hp"),
         knights_config.get("power"),
         [
             Armour(item.get("part"), item.get("protection"))
-            for item in knights_config.get("armour")
-        ] if knights_config.get("armour") is not None else [],
+            for item in armour_items
+        ],
         Weapon(
             knights_config.get("weapon").get("name"),
             knights_config.get("weapon").get("power"),
