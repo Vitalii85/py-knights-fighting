@@ -100,8 +100,6 @@ def battle(knights_config: dict) -> dict[str, int]:
     knights["arthur"].battle_with(knights["red_knight"])
 
     return {
-        knights["lancelot"].name: knights["lancelot"].hp,
-        knights["arthur"].name: knights["arthur"].hp,
-        knights["mordred"].name: knights["mordred"].hp,
-        knights["red_knight"].name: knights["red_knight"].hp,
+        knights[knight_id].name: knights[knight_id].hp
+        for knight_id in knights_ids
     }
